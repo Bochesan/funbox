@@ -1,0 +1,145 @@
+.product-box
+    width: 16em;
+    margin: 0 1em 1.5em;
+
+    &.selected
+
+        .product-box__container
+            border: 0.2em solid c-selected;
+
+            &:after
+                background: c-selected;
+
+        .product-box__size
+            background: c-selected;
+
+    &.disabled
+
+        .product-box
+
+            &__container
+                cursor: default;
+                border: 0.2em solid c-disabled;
+
+                &:after
+                    background: c-disabled;
+
+            &__size
+                background: c-disabled;
+
+            &__image
+            &__title
+            &__name
+            &__composition
+            &__count
+            &__gift
+                opacity: 0.5;
+                color: c-disabled;
+
+            &__footnote
+                color: c-footnote-dis;
+
+
+    &__container
+        cursor: pointer;
+        background: white;
+        margin-bottom: 0.75em;
+        height: 24em;
+        padding: 1.25em 1.25em 0.5em 2.5em;
+        border: 0.2em solid c-default;
+        clip-path: polygon(16% 0%, 100% 0%, 100% 100%, 0 100%, 0 12%);
+        border-radius: 1em;
+        overflow: hidden;
+        position: relative;
+        transition: border 0.3s;
+
+        &:after
+            content: ' ';
+            width: 4em;
+            height: 0.3em;
+            background: c-default;
+            position: absolute;
+            top: 1.2em;
+            left: -1em;
+            transform: rotate(-48deg);
+            transition: background 0.3s;
+
+    &__image
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+
+    &__image--pos
+        left: -1.3em;
+        bottom: -4.5em;
+
+    &__title
+        font-family: ff-T;
+        font-size: 0.8em;
+        color: c-title;
+        margin-bottom: 0.75em;
+
+    &__name
+        font-family: ff-TB;
+        font-size: 2.4em;
+        line-height: normal;
+        font-weight: bold;
+        color: black;
+
+    &__composition
+        font-family: ff-TB;
+        font-size: 1.2em;
+        line-height: normal;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 0.5em;
+
+    &__count
+    &__gift
+        font-family: ff-T;
+        font-size: 0.6em;
+        color: c-title;
+
+    &__count-num
+    &__gift-num
+        font-family: ff-TB;
+
+    &__size
+        font-family: ff-T;
+        font-size: 1.05em;
+        color: white;
+        border-radius: 50%;
+        background: c-default;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 4em;
+        height: @width;
+        position: absolute;
+        bottom: 0.75em;
+        right: 0.75em;
+        overflow: hidden;
+        transition: background 0.3s;
+
+    &__size-num
+        font-size: 2.1em;
+        line-height: 1em;
+
+    &__footnote
+        font-family: ff-T;
+        font-size: 0.65em;
+        color: white;
+        text-align: center;
+
+    &__footnote-button
+        cursor: pointer;
+        font-family: ff-TB;
+        font-size: 1.05em;
+        color: c-default;
+        text-decoration: underline;
+        text-decoration-style: dashed;
+
+        &:hover
+            text-decoration: none;
