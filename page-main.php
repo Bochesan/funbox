@@ -22,7 +22,7 @@
                 <span>кг</span>
             </div>
         </div>
-        <div class="product-box__footnote">Чего сидишь? Порадуй котэ, <span class="product-box__footnote-button">купи.</span></div>
+        <div class="product-box__footnote" data-selected="Головы щучьи с чесноком да свежайшая сёмгушка." data-disabled="Печалька, с фуа-гра закончился."></div>
     </div>
 
     <div class="product-box selected">
@@ -44,7 +44,7 @@
                 <span>кг</span>
             </div>
         </div>
-        <div class="product-box__footnote">Головы щучьи с чесноком да свежайшая сёмгушка.</div>
+        <div class="product-box__footnote" data-selected="Головы щучьи с чесноком да свежайшая сёмгушка." data-disabled="Печалька, с рыбой закончился."></div>
     </div>
 
     <div class="product-box disabled">
@@ -66,7 +66,7 @@
                 <span>кг</span>
             </div>
         </div>
-        <div class="product-box__footnote">Печалька, с курой закончился.</div>
+        <div class="product-box__footnote"  data-selected="Головы щучьи с чесноком да свежайшая сёмгушка." data-disabled="Печалька, с курой закончился."></div>
     </div>
 </div>
 
