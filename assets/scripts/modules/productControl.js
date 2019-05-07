@@ -12,6 +12,7 @@
             this.init();
         }
 
+        // Проверка продукта на состояние и расставление подписей под ним.
         _checkFootnote() {
             if (this._self.classList.contains('selected')) {
                 this._footnote.innerHTML = this._footnote.getAttribute('data-selected');
@@ -24,35 +25,48 @@
             }
         }
 
+        // Выбор продукта или бездействие при состоянии disabled.
         _checked() {
             if (this._self.classList.contains('disabled')) {
                 return false;
             }
             else {
                 this._self.classList.toggle('selected');
+                if (!this._self.classList.contains('selected')) {
+                    this._title.innerHTML = this._title.getAttribute('data-title');
+                    this._title.classList.remove('product-box__title--color');
+                }
             }
         }
 
-        _mouseenter() {
-            if (this._self.classList.contains('selected')) {
-                this._title.innerHTML = 'Сказочное заморское яство';
-            }
-        }
-
+        // Проверка на состояние selected и срабатывание hover`а при потере наведения.
         _mouseleave() {
             if (this._self.classList.contains('selected')) {
-                this._title.innerHTML = 'Title';
+                this._title.innerHTML = this._title.getAttribute('data-title');
+                this._title.classList.remove('product-box__title--color');
             }
         }
 
+        // Проверка на состояние selected и срабатывание hover`а при наведении.
+        _mouseenter() {
+            if (this._self.classList.contains('selected')) {
+                this._title.innerHTML = this._title.getAttribute('data-hover');
+                this._title.classList.add('product-box__title--color');
+            }
+        }
+
+        // Инициализация
         init() {
             let self = this;
 
+            // Клик по контейнеру
             self._container.addEventListener('click', function() {
                 self._checked();
                 self._checkFootnote();
             });
 
+            // Клик по по слову 'купи'. Т.к. слово 'купи' появляется динамически
+            // приходится при клике искать существование эелеменкта
             self._self.onclick = function(e) {
                 if (self._self.querySelectorAll('.product-box__footnote-button')[0] == undefined) {
                     return false;
@@ -75,16 +89,20 @@
                 self._mouseleave();
             });
 
+            // При инициализации проходим по всем продуктам и расставляем
+            // нужные подписи
             self._checkFootnote();
         }
     }
 
-    let productArr = [];
+    // Объявляем коллекцию продуктов.
     let products = document.querySelectorAll('.product-box');
 
-    products.forEach(function(item) {
+    // Fix для IE11 т.к. он не может перебирать коллекции через forEach
+    for (let i = 0; i < products.length; ++i) {
+        let item = products[i];
         let product = new Product(item, 'product-box__container', 'product-box__footnote', 'product-box__title');
-        productArr.push(item);
-    });
+    }
+
 
 })();

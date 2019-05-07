@@ -1,17 +1,40 @@
 .product-box
     width: 16em;
-    margin: 0 1em 1.5em;
+    margin: 0 2em 1.5em;
+
+    +below(1280px)
+        margin: 0 1em 1.5em;
+
+    &:first-child
+        margin-left: 0;
+
+        +below(1280px)
+            margin: 0 1em 1.5em;
+
+    &:last-child
+        margin-right: 0;
+
+        +below(1280px)
+            margin: 0 1em 1.5em;
 
     &.selected
 
-        .product-box__container
-            border: 0.2em solid c-selected;
+        .product-box
 
-            &:after
+            &__container
+                background: linear-gradient(135deg, transparent 35px, c-selected 35px);
+
+                &:hover
+                    background: linear-gradient(135deg, transparent 35px, lighten(c-selected, 10%) 35px);
+
+                    & .product-box__size
+                        background: lighten(c-selected, 10%);
+
+            &__size
                 background: c-selected;
 
-        .product-box__size
-            background: c-selected;
+            &__title--color
+                color: c-selected;
 
     &.disabled
 
@@ -19,10 +42,12 @@
 
             &__container
                 cursor: default;
-                border: 0.2em solid c-disabled;
+                background: linear-gradient(135deg, transparent 35px, c-disabled 35px);
 
-                &:after
-                    background: c-disabled;
+                &:hover
+
+                    & .product-box__size
+                        background: c-disabled;
 
             &__size
                 background: c-disabled;
@@ -42,37 +67,39 @@
 
     &__container
         cursor: pointer;
-        background: white;
+        background: linear-gradient(135deg, transparent 35px, c-default 35px);
         margin-bottom: 0.75em;
-        height: 24em;
-        padding: 1.25em 1.25em 0.5em 2.5em;
-        border: 0.2em solid c-default;
-        clip-path: polygon(16% 0%, 100% 0%, 100% 100%, 0 100%, 0 12%);
         border-radius: 1em;
-        overflow: hidden;
         position: relative;
+        padding: 0.2em;
         transition: border 0.3s;
 
-        &:after
-            content: ' ';
-            width: 4em;
-            height: 0.3em;
-            background: c-default;
-            position: absolute;
-            top: 1.2em;
-            left: -1em;
-            transform: rotate(-51deg);
-            transition: background 0.3s;
+        &:hover
+            background: linear-gradient(135deg, transparent 35px, lighten(c-default, 10%) 35px);
+
+            & .product-box__size
+                background: lighten(c-default, 10%);
+
+    &__container-inner
+        background: linear-gradient(135deg, transparent 35px, white 35px);
+        height: 24em;
+        border-radius: 1em;
+        position: relative;
+        overflow: hidden;
+        padding: 1.25em 1.25em 0.5em 2.5em;
 
     &__image
         position: absolute;
         bottom: 0;
         left: 0;
-        z-index: -1;
 
     &__image--pos
         left: -1.3em;
         bottom: -4.5em;
+
+    &__info
+        position: relative;
+        z-index: 10;
 
     &__title
         font-family: ff-T;
@@ -120,6 +147,7 @@
         position: absolute;
         bottom: 0.75em;
         right: 0.75em;
+        z-index: 20;
         overflow: hidden;
         transition: background 0.3s;
 
